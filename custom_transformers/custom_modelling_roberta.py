@@ -1316,7 +1316,7 @@ class RobertaForSequenceClassification(RobertaPreTrainedModel):
             return_dict=return_dict,
             output_norms=output_norms, # Original implemenration by Goro Kobayashi
         )
-        sequence_output = outputs[0]
+        sequence_output = outputs[1]
         logits = self.classifier(sequence_output)
 
         loss = None
