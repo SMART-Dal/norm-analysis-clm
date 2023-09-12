@@ -35,3 +35,4 @@ transformers==4.30.1
 triton==2.0.0
 typing_extensions==4.6.3
 urllib3==2.0.3
+scienceplots
