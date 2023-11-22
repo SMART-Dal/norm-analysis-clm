@@ -12,7 +12,7 @@ We conduct an initial empirical study analyzing both attention distributions and
 ### Structure
 This repository contains the code and data needed to replicate the study. The main folders of this repository is described as follow,
 - `custom_transformers`: This folder contains the modified implementation of `modelling_roberta.py` from the `transformers` library, based on Kobayashi _et al._ [work](https://github.com/gorokoba560/norm-analysis-of-transformer). It is used to generate maps of $||f(x)||$ and $||\alpha f(x)||$ along with the attention maps from each head.
-- `data`: Contains the data that was used in this study. It is generated after performing some preprocessing steps. We directly include the preprocessed data for convenience. You can also generate it from scratsh following the steps that will be mentioned next.
+- `data`: Contains the data that was used in this study. It is generated after performing some preprocessing steps. For convenience, the data can be directly downloaded from the `Data` folder in this [link](https://drive.google.com/drive/u/0/folders/1yalXZDtI055XtPhMyqTw4SlKuJannFZ4). You can also generate it from scratsh following the steps that will be mentioned later.
 - `notebooks`: Notebooks that were used to preprocess the data are located here.
 - `raw_data`: Data that will be preprocessed before conducting the study. As mentioned, we used two corpora (Python and Java) from CodeSearchNet. The raw data for the Java corpus is seeded by randomly sampling 65K samples. You can download the set from the original repository [here](https://github.com/github/CodeSearchNet#data), or you can download our initial seed of 65K from [here](https://drive.google.com/drive/folders/1yalXZDtI055XtPhMyqTw4SlKuJannFZ4?usp=sharing). As for the Python dataset, we used Wan _et al._'s given that it already contains the property map ([link](https://drive.google.com/file/d/1FCDcl7eRm_H30-huqnWe7rVSCd7Jx0nl/view))
 - `results`: The destination folder where the results of RQ1 and RQ2 will be saved. `java` and `python` will contain the results of RQ1, whereas the root folder will contain the results of RQ2. We also provide the results data direclty: RQ1 results can be downloaded from [here](https://drive.google.com/drive/folders/1yalXZDtI055XtPhMyqTw4SlKuJannFZ4) and RQ2 results are already included there (the `.pickle` files).
@@ -37,3 +37,25 @@ To generate the data needed to answer RQ1 and RQ2, execute the following command
 `python3 scripts/RQx.py`  
 where `x` is `1` or `2` depending on the RQ. The results of RQ1 will be stored in `results/java` and `results/python`, whereas the results of RQ2 will be directly saved as `.pickle` files in `results`.  
 Finally, to generate the visualizations that were used to study the difference between the components of the MHA (_i.e.,_ $\alpha$, $f(x)$ and $\alpha f(x)$), execute the Jupyter notebooks `RQ1.ipynb` and `RQ2.ipynb` in the `visualization` folder.
+
+### RQ Figures
+
+All figure generated and presented in the manuscript are in the `figures` folder.
+
+##### Trend Analysis $\alpha$ vs $||\alpha f(x)||$
+
+Python             |  Java
+:-------------------------:|:-------------------------:
+![](./figures/fig2_a_vs_afx_python.png)  |  ![](./figures/fig2_a_vs_afx_python.png)
+
+##### Cancelling Effect between $\alpha$ and $||f(x)||$ (Example: \<s\> token)
+
+$\alpha$             |  $\|\|f(x)\|\|$
+:-------------------------:|:-------------------------:
+![](./figures/fig3_java_SEP_alpha_cropped.png)  |  ![](./figures/fig3_java_SEP_fx_cropped.png)
+
+
+##### Syntactic Alignment
+Attention Weights             |  Scaled Norms
+:-------------------------:|:-------------------------:
+![](./figures/fig4_ast_agreement_attn-1.png)  |  ![](./figures/fig4_ast_agreement_afx-1.png)
