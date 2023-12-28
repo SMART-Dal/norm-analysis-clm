@@ -97,7 +97,7 @@ Python             |  Java
 
 $\alpha$             |  $\|\|f(x)\|\|$
 :-------------------------:|:-------------------------:
-![](./figures/fig3_java_SEP_alpha_cropped.png)  |  ![](./figures/fig3_java_SEP_fx_cropped.png)
+![](https://github.com/SMART-Dal/norm-analysis-clm/blob/main/figures/fig3_java_SEP_alpha_cropped.png?raw=true)  |  ![](https://github.com/SMART-Dal/norm-analysis-clm/blob/main/figures/fig3_java_SEP_fx_cropped.png?raw=true)
 
 
 ##### Syntactic Alignment
