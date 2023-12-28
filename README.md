@@ -1,4 +1,5 @@
 # Naturalness of Attention: Revisiting Attention in Code Language Models (ICSE'24 NIER)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10439287.svg)](https://doi.org/10.5281/zenodo.10439287)
 
 ## Abstract
 > Language models like CodeBERT have advanced source code representation learning, but their opacity poses barriers to understanding what properties they capture. Recent attention analysis studies provide initial interpretability insights by focusing solely on attention weights rather than considering the complete context modeling of Transformers. 
