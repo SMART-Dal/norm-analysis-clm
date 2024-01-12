@@ -10,9 +10,7 @@ import numpy as np
 import torch
 from tqdm import tqdm
 import sys
-sys.path.append('../custom_transformers')
-
-import custom_modelling_roberta
+from custom_transformers import RobertaModel
 
 sm = torch.nn.functional.softmax
 normalize = torch.nn.functional.normalize
@@ -149,7 +147,7 @@ if __name__ == "__main__":
     from transformers import RobertaTokenizer
 
     model_version='microsoft/codebert-base'
-    model=custom_modelling_roberta.RobertaModel.from_pretrained(model_version)
+    model=RobertaModel.from_pretrained(model_version)
     tokenizer=RobertaTokenizer.from_pretrained(model_version,do_lower_case=False)
 
     num_layers = model.config.num_hidden_layers
@@ -158,8 +156,12 @@ if __name__ == "__main__":
     print('Layers:', num_layers)
     print('Heads:', num_heads)
 
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    parent_directory = os.path.split(current_dir)[0]
+
     model.to('cuda')
-    dataset=getData('../data/5k_csn_python.jsonl')
+    python_file_dir = os.path.join(parent_directory, 'data', '5k_csn_python.jsonl')
+    dataset=getData(python_file_dir)
     shuffle=True
     num_sequences=5000
     if shuffle:
@@ -204,11 +206,11 @@ if __name__ == "__main__":
     exp_name_alpha='edge_features_contact_mean_codebert_python_noneighbor'
     exp_name_afx='edge_features_contact_afx_mean_codebert_python_noneighbor'
     
-    path = os.path.join("..", "results", f'{exp_name_alpha}.pickle')
+    path = os.path.join(parent_directory, "results", f'{exp_name_alpha}.pickle')
     pickle.dump((dict(feature_to_weighted_sum), weight_total), open(path, 'wb'))
     print('Wrote to', path)
 
 
-    path_afx = os.path.join("..", "results", f'{exp_name_afx}.pickle')
+    path_afx = os.path.join(parent_directory, "results", f'{exp_name_afx}.pickle')
     pickle.dump((dict(feature_to_weighted_sum_afx), weight_total_afx), open(path_afx, 'wb'))
     print('Wrote to', path_afx)

@@ -2,7 +2,7 @@ certifi==2023.5.7
 charset-normalizer==3.1.0
 cmake==3.26.4
 filelock==3.12.2
-fsspec==2023.6.0
+fsspec
 huggingface-hub==0.15.1
 idna==3.4
 Jinja2==3.1.2
@@ -38,3 +38,5 @@ urllib3==2.0.3
 scienceplots
 jupyterlab
 notebook
+seaborn
+code-tokenize

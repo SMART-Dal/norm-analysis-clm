@@ -1,24 +1,25 @@
 import os
 import gc
 import sys
-sys.path.append('../custom_transformers')
+
 import json
 import pickle
 import numpy as np
 import pandas as pd
 from tqdm import tqdm
 from itertools import chain
-import custom_modelling_roberta
 from transformers import RobertaTokenizer
 import torch
 import warnings
 warnings.filterwarnings("ignore")
 
-MODEL_TAG = "mi"
+from custom_transformers import RobertaModel
+MODEL_TAG = 'microsoft/codebert-base'
+
 
 device = "cuda" if torch.cuda.is_available() else "cpu"
 tokenizer = RobertaTokenizer.from_pretrained(MODEL_TAG)
-model = custom_modelling_roberta.RobertaModel.from_pretrained(MODEL_TAG)
+model = RobertaModel.from_pretrained(MODEL_TAG)
 model.to(device)
 
 def get_word_fx(f_x, words_to_tokens, mode="mean"):
@@ -123,11 +124,12 @@ def transform_norms(afx_matx):
 
 # To generate norms for using java corpus, change the path
 # of `file_name` to `5k_csn_java.jsonl` and `lang` to `java`
-
-file_name = "../data/5k_csn_python.jsonl"
+current_dir = os.path.dirname(os.path.abspath(__file__))
+parent_directory = os.path.split(current_dir)[0]
+file_name = os.path.join(parent_directory, "data", "5k_csn_python.jsonl")
 data = read_jsonl_file(file_name)
 lang = "python"
-output = os.path.join("..", "results", lang)
+output = os.path.join(parent_directory, "results", lang)
 
 cls_attention_lis =  [[[] for _ in range(12)] for _ in range(12)]
 cls_fx_lis =  [[[] for _ in range(12)] for _ in range(12)]
