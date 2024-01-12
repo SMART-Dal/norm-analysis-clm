@@ -80,9 +80,12 @@ Execute the notebooks `Preparing_CSN_Java.ipynb` and `Preparing_CSN_Python.ipynb
 ### Generating Data for RQs
 To generate the data needed to answer RQ1 and RQ2, execute the following command,  
 ```console
-python3 -m scripts.RQx.py
+python3 -m scripts.RQx
 ```  
 where `x` is `1` or `2` depending on the RQ. The results of RQ1 will be stored in `results/java` and `results/python`, whereas the results of RQ2 will be directly saved as `.pickle` files in `results`.  
+
+Note that for RQ1, you will need to update L129 with the raw file containing Java sampels (`data/5k_csn_java.jsonl`) and set the variable `lang` L131 to `java` in the file `scripts/RQ1.py`
+
 Finally, to generate the visualizations that were used to study the difference between the components of the MHA (_i.e.,_ $\alpha$, $f(x)$ and $\alpha f(x)$), execute the Jupyter notebooks `RQ1.ipynb` and `RQ2.ipynb` located in the `visualization` folder.
 
 ### RQ Figures
