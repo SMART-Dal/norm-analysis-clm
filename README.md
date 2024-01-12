@@ -30,7 +30,7 @@ This repository contains the code and data needed to replicate the study. The ma
 For this small, self-contained codebase, virtualenv provides a lightweight way to manage dependencies and distribute the code. Docker or VMs would add unnecessary complexity. Virtualenv encapsulates the Python environment without the configuration and size overhead of containers or VMs. It ensures portability and reproducibility while maintaining simplicity for this study.  
 First, create virtual environment to install the dependencies,  
 ```console
-python3 -m venv norm_analysis`  
+python3 -m venv norm_analysis
 ```
 Second, activate the virtual environment (if you are using a Linux distribution or macOS),
 ```console
@@ -55,6 +55,7 @@ pip install --user ipykernel
 ```console
 python -m ipykernel install --user --name=norm_analysis
 ```
+If you face an issue while executing the two above commands, try setting `include-system-site-packages` in `norm_analysis/config.cfg` to `true`.  
 To execute the notebooks, execute the following command,
 ```console
 jupyter notebook
@@ -79,7 +80,7 @@ Execute the notebooks `Preparing_CSN_Java.ipynb` and `Preparing_CSN_Python.ipynb
 ### Generating Data for RQs
 To generate the data needed to answer RQ1 and RQ2, execute the following command,  
 ```console
-python3 scripts/RQx.py
+python3 -m scripts.RQx.py
 ```  
 where `x` is `1` or `2` depending on the RQ. The results of RQ1 will be stored in `results/java` and `results/python`, whereas the results of RQ2 will be directly saved as `.pickle` files in `results`.  
 Finally, to generate the visualizations that were used to study the difference between the components of the MHA (_i.e.,_ $\alpha$, $f(x)$ and $\alpha f(x)$), execute the Jupyter notebooks `RQ1.ipynb` and `RQ2.ipynb` located in the `visualization` folder.
