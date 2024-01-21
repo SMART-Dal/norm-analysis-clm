@@ -47,6 +47,11 @@ Then, these dependencies can be installed by executing,
 pip install -r requirements.txt
 ```
 
+Note that we `scienceplots` to plot the graphs of RQ1. This entails that you need to install LaTex. If you are using MacOS, you can use [MacTex](https://www.tug.org/mactex/). As for Windows OS, you can use [MiKTeX](https://miktex.org/). Linux (Ubuntu) users can install Tex and its requirements as such:
+```
+sudo apt-get install dvipng texlive-latex-extra texlive-fonts-recommended cm-super
+```
+
 The final step is to add the virtual enviornment to Jupyter Notebook. This is done by executing the following command. Make sure that the virtual enviornment is activated when doing so.
 
 ```console
